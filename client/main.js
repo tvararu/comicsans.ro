@@ -5,16 +5,16 @@ Router.configure({
 Router.map(function() {
   this.route('home', {
     path: '/',
-    template: 'home',
+    template: 'home'
+  });
+  
+  this.route('play', {
+    path: '/play',
+    template: 'play',
     
     before: function() {
       this.subscribe('posts');
       this.subscribe('answers');
     }
-  });
-  
-  this.route('sup', {
-    path: '/sup',
-    template: 'sup'
   });
 });

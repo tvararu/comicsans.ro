@@ -6,27 +6,28 @@
 </head>
 
 <template name="layout">
-  {{yield}}
-</template>
-
-<template name="home">
   <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <h1>wow such comic</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
-        {{> posts}}
-      </div>
-      <div class="col-sm-6">
-        {{> answers}}
-      </div>
-    </div>
+    {{yield}}
   </div>
 </template>
 
-<template name="sup">
+<template name="home">
   <p>sup!</p>
+  <a href="{{pathFor 'play'}}">Let's play!</a>
+</template>
+
+<template name="play">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>wow such comic</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      {{> posts}}
+    </div>
+    <div class="col-sm-6">
+      {{> answers}}
+    </div>
+  </div>
 </template>
