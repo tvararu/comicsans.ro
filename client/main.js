@@ -1,4 +1,5 @@
 Meteor.subscribe('posts');
+Meteor.subscribe('answers');
 
 Template.main.helpers({
   posts: function() {
