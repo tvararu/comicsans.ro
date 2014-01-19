@@ -16,10 +16,11 @@ Template.post.events({
     });
     
     if ((this.fake && answeredFake) || (!this.fake && !answeredFake)) {
-      // if he got it right
-      console.log('Correct!');
+      // if the player got it right
+      var answerCount = Session.get('answerCount');
+      Session.set('answerCount', answerCount + 1);
     } else {
-      console.log('Wrong!');
+      Session.set('answerCount', 0);
     }
   }
 });

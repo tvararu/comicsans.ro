@@ -13,6 +13,7 @@ Router.map(function() {
     template: 'play',
     
     before: function() {
+      Session.set('answerCount', 0);
       this.subscribe('posts');
       this.subscribe('answers');
     }
