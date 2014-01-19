@@ -1,13 +1,9 @@
 <template name="postShow">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      {{#with post}}
-        <a href="{{url}}" target="_blank">{{title}}</a>
-        <div class="btn-group btn-block">
-          <button class="btn btn-success vote real">Real news</button>
-          <button class="btn btn-danger vote fake">Times New Roman</button>
-        </div>
-      {{/with}}
+  {{#with post}}
+    <p class="headline">{{title}}</p>
+    <div class="btn-group btn-block">
+      <button class="btn btn-success vote real">Real news</button>
+      <button class="btn btn-danger vote fake">Times New Roman</button>
     </div>
-  </div>
+  {{/with}}
 </template>

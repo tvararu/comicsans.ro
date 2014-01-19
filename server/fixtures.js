@@ -65,7 +65,7 @@ if (Posts.find().count() === 0) {
     title: 'Băsescu, aprobat de Guţă: "S-a aliniat majorităţii. Manelele are linii melodice melodioase"',
     url: 'http://www.antena3.ro/romania/basescu-aprobat-de-guta-s-a-aliniat-majoritatii-manelele-are-linii-melodice-melodioase-92934.html'
   }, {
-    title: 'Primăria din Borsa a fost închisă pe perioadă nedeterminată dupa o decizie a primarului. Prefectul județului: Primăria nu e închisă, s-a pierdut cheia de la intrare',
+    title: 'Primăria din Borsa a fost închisă pe perioadă nedeterminată dupa o decizie a primarului. Prefectul judetului: Primăria nu e închisă, s-a pierdut cheia de la intrare',
     url: 'http://www.hotnews.ro/stiri-esential-15413825-situatie-fara-precedent-intr-oras-din-romania-primaria-din-borsa-fost-inchisa-perioada-nedeterminata-dupa-decizie-primarului-prefectul-judetului-primaria-nu-inchisa-pierdut-cheia-intrare.htm'
   }, {
     title: 'Familia a comandat sicriu din aur pentru regele Cioabă',
@@ -77,7 +77,7 @@ if (Posts.find().count() === 0) {
     title: 'Primăria Satu Mare a inaugurat 10 cosuri de gunoi',
     url: 'http://www.hotnews.ro/stiri-administratie_locala-15372283-primaria-satu-mare-inaugurat-10-cosuri-gunoi.htm'
   }, {
-    title: 'Radio Trinitas: prima aplicație oficială a Patriarhiei Romane',
+    title: 'Radio Trinitas: prima aplicatie oficială a Patriarhiei Romane',
     url: 'http://www.stiri-azi.ro/ziare/articol/articol/radio-trinitas-prima-aplicatie-oficiala-a-patriarhiei-romane/sumar-articol/87536480/'
   }, {
     title: 'Comisia Europeană a inclus România pe harta trenurilor de mare viteză',
@@ -86,7 +86,7 @@ if (Posts.find().count() === 0) {
     title: 'Un câine poliţist, arestat în cadrul unui control la o vamă din Republica Moldova',
     url: 'http://www.antena3.ro/externe/un-caine-politist-arestat-in-cadrul-unui-control-la-o-vama-din-republica-moldova-232281.html'
   }, {
-    title: 'Proteste la Londra, din cauza gazelor de sist. 6 persoane s-au lipit cu super glue de o clădire',
+    title: 'Proteste la Londra, din cauza gazelor de șist. 6 persoane s-au lipit cu super glue de o clădire',
     url: 'http://stirileprotv.ro/stiri/international/proteste-la-londra-din-cauza-gazelor-de-sist-6-persoane-s-au-lipit-cu-super-glue-de-o-cladire.html'
   }];
   
