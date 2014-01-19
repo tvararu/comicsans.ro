@@ -1,0 +1,17 @@
+<head>
+  <title>tnr</title>
+</head>
+
+<body>
+  {{> main}}
+</body>
+
+<template name="main">
+  {{#each posts}}
+    {{> post}}
+  {{/each}}
+</template>
+
+<template name="post">
+  {{title}}
+</template>
