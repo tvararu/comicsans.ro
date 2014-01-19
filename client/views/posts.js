@@ -7,9 +7,19 @@ Template.posts.helpers({
 Template.post.events({
   'click .vote': function(e) {
     e.preventDefault();
+    
+    var answeredFake = $(e.target).hasClass('fake');
+    
     Answers.insert({
       postId: this._id,
-      fake: $(e.target).hasClass('fake')
+      fake: answeredFake
     });
+    
+    if ((this.fake && answeredFake) || (!this.fake && !answeredFake)) {
+      // if he got it right
+      console.log('Correct!');
+    } else {
+      console.log('Wrong!');
+    }
   }
 });
