@@ -7,11 +7,12 @@
 </body>
 
 <template name="main">
+  <h1>omg</h1>
   {{#each posts}}
     {{> post}}
   {{/each}}
 </template>
 
 <template name="post">
-  {{title}}
+  <a class="{{fake}}" href="{{url}}" target="_blank">{{title}}</a><br />
 </template>
