@@ -5,7 +5,11 @@
   <title>Comicsans.ro</title>
 </head>
 
-<body>
+<template name="layout">
+  {{yield}}
+</template>
+
+<template name="home">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -21,4 +25,8 @@
       </div>
     </div>
   </div>
-</body>
+</template>
+
+<template name="sup">
+  <p>sup!</p>
+</template>

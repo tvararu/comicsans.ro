@@ -7,3 +7,4 @@ standard-app-packages
 preserve-inputs
 stylus
 bootstrap-3
+iron-router
