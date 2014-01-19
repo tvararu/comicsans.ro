@@ -74,7 +74,7 @@ if (Posts.find().count() === 0) {
     title: 'Mircea Sandu va oferi bilete la meciul România - Ungaria familiei copilului ucis de câinii comunitari',
     url: 'http://www.prosport.ro/fotbal-intern/nationala/mircea-sandu-va-oferi-bilete-la-meciul-romania-ungaria-familiei-copilului-ucis-de-cainii-comunitari-11292745'
   }, {
-    title: 'Primaria Satu Mare a inaugurat 10 cosuri de gunoi',
+    title: 'Primăria Satu Mare a inaugurat 10 cosuri de gunoi',
     url: 'http://www.hotnews.ro/stiri-administratie_locala-15372283-primaria-satu-mare-inaugurat-10-cosuri-gunoi.htm'
   }, {
     title: 'Radio Trinitas: prima aplicație oficială a Patriarhiei Romane',
