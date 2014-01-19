@@ -1,9 +1,9 @@
-Template.play.helpers({
+Template.score.helpers({
   answerCount: function() {
     return Session.get('answerCount');
   },
   
   postCount: function() {
-    return Posts.find().count();
+    return Session.get('postCount');
   }
 });

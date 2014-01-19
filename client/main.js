@@ -1,3 +1,10 @@
+Meteor.subscribe('posts', function() {
+  Session.set('postCount', Posts.find().count());
+  Session.set('raffle', _.shuffle(Posts.find().fetch()));
+});
+
+Meteor.subscribe('answers');
+
 Router.configure({
   layoutTemplate: 'layout'
 });
@@ -13,9 +20,19 @@ Router.map(function() {
     template: 'play',
     
     before: function() {
+      Session.set('raffle', _.shuffle(Posts.find().fetch()));
       Session.set('answerCount', 0);
-      this.subscribe('posts');
-      this.subscribe('answers');
+    }
+  });
+  
+  this.route('gameover', {
+    path: '/gameover',
+    template: 'gameover',
+    
+    before: function() {
+      if (!Session.get('postCount')) {
+        this.redirect('home');
+      }
     }
   });
 });

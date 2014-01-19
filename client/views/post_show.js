@@ -1,26 +1,28 @@
-Template.posts.helpers({
-  posts: function() {
-    return _.shuffle(Posts.find().fetch());
+Template.postShow.helpers({
+  post: function() {
+    return Session.get('raffle')[Session.get('answerCount')];
   }
 });
 
-Template.post.events({
+Template.postShow.events({
   'click .vote': function(e) {
     e.preventDefault();
     
     var answeredFake = $(e.target).hasClass('fake');
     
-    Answers.insert({
+    var answer = {
       postId: this._id,
       fake: answeredFake
-    });
+    };
+    
+    Meteor.call('answer', answer);
     
     if ((this.fake && answeredFake) || (!this.fake && !answeredFake)) {
       // if the player got it right
       var answerCount = Session.get('answerCount');
       Session.set('answerCount', answerCount + 1);
     } else {
-      Session.set('answerCount', 0);
+      Router.go('gameover');
     }
   }
 });

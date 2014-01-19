@@ -1,15 +1,17 @@
 <template name="play">
   <div class="row">
     <div class="col-sm-12">
-      <h1>wow such comicsans: {{answerCount}}/{{postCount}}</h1>
+      <h1>wow such score: {{> score}}</h1>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6">
-      {{> posts}}
-    </div>
-    <div class="col-sm-6">
-      {{> answers}}
+    <div class="col-sm-12">
+      {{> postShow}}
     </div>
   </div>
+</template>
+
+<template name="gameover">
+  <h1>Yer done: {{> score}}</h1>
+  <a href="{{pathFor 'play'}}">Let's play!</a>
 </template>
