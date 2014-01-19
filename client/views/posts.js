@@ -5,21 +5,11 @@ Template.posts.helpers({
 });
 
 Template.post.events({
-  'click .vote.real': function(e) {
+  'click .vote': function(e) {
     e.preventDefault();
-    if (this.fake === false) {
-      console.log('Right!');
-    } else {
-      console.log('Wrong!');
-    }
-  },
-  
-  'click .vote.fake': function(e) {
-    e.preventDefault();
-    if (this.fake === true) {
-      console.log('Right!');
-    } else {
-      console.log('Wrong!');
-    }
+    Answers.insert({
+      postId: this._id,
+      fake: $(e.target).hasClass('fake')
+    });
   }
 });

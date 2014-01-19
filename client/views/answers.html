@@ -1,6 +1,6 @@
 <template name="answers">
   <div class="row">
-    <button class="btn btn-danger delete-everything col-sm-3">Delete everything</button>
+    <button class="btn btn-danger btn-block delete-everything col-sm-12">Delete everything</button>
   </div>
   {{#each answers}}
     <div class="row">
@@ -12,5 +12,5 @@
 </template>
 
 <template name="answer">
-  <p>lorem</p>
+  id: {{postId}}, fake: {{fake}}
 </template>
