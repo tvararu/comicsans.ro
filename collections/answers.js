@@ -5,3 +5,9 @@ Answers.allow({
   update: function() { return true; },
   remove: function() { return true; }
 });
+
+Meteor.methods({
+  removeAllAnswers: function() {
+    return Answers.remove({});
+  }
+});

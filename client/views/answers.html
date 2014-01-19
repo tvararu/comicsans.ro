@@ -1,0 +1,16 @@
+<template name="answers">
+  <div class="row">
+    <button class="btn btn-danger delete-everything col-sm-3">Delete everything</button>
+  </div>
+  {{#each answers}}
+    <div class="row">
+      <div class="col-sm-12">
+        {{> answer}}
+      </div>
+    </div>
+  {{/each}}
+</template>
+
+<template name="answer">
+  <p>lorem</p>
+</template>
