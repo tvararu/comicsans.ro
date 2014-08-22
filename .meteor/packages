@@ -7,3 +7,4 @@ standard-app-packages
 stylus
 bootstrap-3
 iron-router
+fast-render
