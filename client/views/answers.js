@@ -7,7 +7,7 @@ Template.answers.helpers({
 Template.answers.events({
   'click .delete-everything': function(e) {
     e.preventDefault();
-    
+
     Meteor.call('removeAllAnswers');
   }
 });
