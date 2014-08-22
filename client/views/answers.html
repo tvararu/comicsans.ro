@@ -1,9 +1,12 @@
 <template name="answers">
-  <ul>
-    {{#each answers}}
-      {{> answer}}
-    {{/each}}
-  </ul>
+  <div class="answers">
+    <h1><strong class="count">{{count}}</strong> answers and counting.</h1>
+    <ul>
+      {{#each answers}}
+        {{> answer}}
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name="answer">

@@ -1,10 +1,6 @@
 Answers = new Meteor.Collection('answers');
 
 Meteor.methods({
-  // removeAllAnswers: function() {
-  //   return Answers.remove({});
-  // },
-
   answer: function(answerAttributes) {
     if (!answerAttributes.postId) {
       throw new Meteor.Error(422, 'Answer does not have an attached postId.');
