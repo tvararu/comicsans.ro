@@ -1,9 +1,9 @@
 Answers = new Meteor.Collection('answers');
 
 Meteor.methods({
-  removeAllAnswers: function() {
-    return Answers.remove({});
-  },
+  // removeAllAnswers: function() {
+  //   return Answers.remove({});
+  // },
 
   answer: function(answerAttributes) {
     if (!answerAttributes.postId) {
