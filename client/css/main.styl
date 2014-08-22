@@ -1,3 +1,5 @@
+@import 'nib'
+
 // Great baseline colors from http://designmodo.github.io/Flat-UI/
 flat_turquoise ?= #1ABC9C
 flat_green_sea ?= #16A085
@@ -33,17 +35,20 @@ html, body
   width: 100%
   height: 100%
 
-body > .container
+body
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
   font-weight: 300
   font-size: 32px
   line-height: 1.5em
   color: flat_midnight_blue
-  
+  font-feature-settings: 'kern'
+  -moz-font-feature-settings: 'kern'
+  -webkit-font-feature-settings: 'kern'
+
 @media (max-width: 767px)
   body > .container
     font-size: 20px
-    
+
 
 h1
   font-size: 1.5em
@@ -69,11 +74,13 @@ p
 
 .btn-success
   background: flat_emerald
+  transition: background .1s linear
   &:hover
     background: flat_nephritis
 
 .btn-danger
   background: flat_alizarin
+  transition: background .1s linear
   &:hover
     background: flat_pomegranate
 
