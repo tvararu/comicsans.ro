@@ -4,7 +4,8 @@
     "basePackages": {
       "bootstrap-3": {},
       "iron-router": {},
-      "fast-render": {}
+      "fast-render": {},
+      "publish-counts": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/arunoda/meteor-fast-render.git",
         "tag": "v1.0.0",
         "commit": "acbc04982025fe78cebb8865b5a04689741d4b0b"
+      },
+      "publish-counts": {
+        "git": "https://github.com/percolatestudio/publish-counts.git",
+        "tag": "v0.2.2",
+        "commit": "45cf58d47a34b06d2788e30f140b6392644f6199"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",
