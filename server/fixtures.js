@@ -1,3 +1,4 @@
+/* jshint maxlen: 500 */
 if (Posts.find().count() === 0) {
   var tnr = [{
     title: 'Începerea sesiunii de toamnă a Bacalaureatului aduce cursul Leu/Euro la un nou maxim istoric',
@@ -42,7 +43,7 @@ if (Posts.find().count() === 0) {
     title: 'CFR nu e în stare de nimic. Întârzierile trenurilor au fost afișate pe tabelă cu o oră întârziere',
     url: 'http://www.timesnewroman.ro/life-death/10386-cfr-nu-e-in-stare-de-nimic-intarzierile-trenurilor-au-fost-afisate-pe-tabela-cu-o-ora-intarziere'
   }];
-  
+
   var real = [{
     title: 'Trei deputați, un senator, prefectul și președintele CJ Suceava, la inaugurarea unui lift',
     url: 'http://www.stiri-azi.ro/ziare/articol/articol/trei-deputati-un-senator-prefectul-si-presedintele-cj-suceava-la-inaugurarea-unui-lift/sumar-articol/115956702/'
@@ -86,17 +87,17 @@ if (Posts.find().count() === 0) {
     title: 'Proteste la Londra, din cauza gazelor de șist. 6 persoane s-au lipit cu super glue de o clădire',
     url: 'http://stirileprotv.ro/stiri/international/proteste-la-londra-din-cauza-gazelor-de-sist-6-persoane-s-au-lipit-cu-super-glue-de-o-cladire.html'
   }];
-  
+
   _.each(tnr, function(post) {
     post.fake = true;
   });
-  
+
   _.each(real, function(post) {
     post.fake = false;
   });
-  
-  var allPosts = tnr.concat(real)
-  
+
+  var allPosts = tnr.concat(real);
+
   _.each(allPosts, function(post) {
     Posts.insert(post);
   });
