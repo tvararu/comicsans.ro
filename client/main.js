@@ -19,7 +19,7 @@ Router.map(function() {
     path: '/play',
     template: 'play',
 
-    before: function() {
+    onBeforeAction: function() {
       Session.set('raffle', _.shuffle(Posts.find().fetch()));
       Session.set('answerCount', 0);
     }
@@ -29,7 +29,7 @@ Router.map(function() {
     path: '/gameover',
     template: 'gameover',
 
-    before: function() {
+    onBeforeAction: function() {
       if (!Session.get('postCount')) {
         this.redirect('home');
       }
