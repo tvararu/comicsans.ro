@@ -45,10 +45,28 @@ body
   -moz-font-feature-settings: 'kern'
   -webkit-font-feature-settings: 'kern'
 
-@media (max-width: 767px)
-  body > .container
+  @media (max-width: 767px)
     font-size: 20px
 
+html.basehold body
+  position: relative
+
+  &:after
+    position: absolute
+    width: auto
+    height: auto
+    z-index: 9999
+    content: ''
+    display: block
+    pointer-events: none
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    background: url('http://basehold.it/image.php?height=48') repeat top left
+
+    @media (max-width: 767px)
+      background: url('http://basehold.it/image.php?height=30') repeat top left
 
 h1
   font-size: 1.5em

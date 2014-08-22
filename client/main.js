@@ -3,8 +3,6 @@ Meteor.subscribe('posts', function() {
   Session.set('raffle', _.shuffle(Posts.find().fetch()));
 });
 
-Meteor.subscribe('answers');
-
 Router.configure({
   layoutTemplate: 'layout'
 });
@@ -35,4 +33,17 @@ Router.map(function() {
       }
     }
   });
+
+  this.route('answers', {
+    path: '/answers',
+    template: 'answers',
+
+    onBeforeAction: function () {
+      Meteor.subscribe('answers');
+    }
+  });
 });
+
+if (window.location.href.indexOf('basehold=it') !== -1) {
+  $('html').addClass('basehold');
+}

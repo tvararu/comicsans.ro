@@ -1,16 +1,11 @@
 <template name="answers">
-  <div class="row">
-    <button class="btn btn-danger btn-block delete-everything col-sm-12">Delete everything</button>
-  </div>
-  {{#each answers}}
-    <div class="row">
-      <div class="col-sm-12">
-        {{> answer}}
-      </div>
-    </div>
-  {{/each}}
+  <ul>
+    {{#each answers}}
+      {{> answer}}
+    {{/each}}
+  </ul>
 </template>
 
 <template name="answer">
-  id: {{postId}}, fake: {{fake}}
+  <li>postId: {{postId}}, fake: {{fake}}, time: {{submitted}}</li>
 </template>

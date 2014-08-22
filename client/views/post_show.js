@@ -8,7 +8,7 @@ Template.postShow.events({
   'click .vote': function(e) {
     e.preventDefault();
 
-    var answeredFake = $(e.target).hasClass('fake');
+    var answeredFake = $(e.target).hasClass('fake').toString();
 
     var answer = {
       postId: this._id,

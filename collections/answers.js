@@ -13,7 +13,7 @@ Meteor.methods({
     var post = Posts.findOne(answerAttributes.postId);
 
     if (!post) {
-      throw new Meteor.Error(422, 'Answer postId does not match an existant post.');
+      throw new Meteor.Error(422, 'Answer postId does not match an existent post.');
     }
 
     if (answerAttributes.fake === undefined) {
