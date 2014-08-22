@@ -37,12 +37,13 @@ Router.map(function() {
   this.route('answers', {
     path: '/answers',
     template: 'answers',
-
-    onBeforeAction: function () {
-      Meteor.subscribe('answers');
+    waitOn: function () {
+      return Meteor.subscribe('answers');
     }
   });
 });
+
+Router.onBeforeAction('loading');
 
 if (window.location.href.indexOf('basehold=it') !== -1) {
   $('html').addClass('basehold');
