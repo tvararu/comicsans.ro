@@ -1,14 +1,14 @@
-<template name="play">
-  <div class="play row">
+<template name="gameover">
+  <div class="gameover row">
     <div class="col-sm-8 col-sm-offset-2">
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
-          <h1 class="score animoot">Scor: {{> score}}</h1>
+          <h1 class="animoot">Atât. Scor final: {{> score}}</h1>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
-          {{> postShow}}
+          <a href="{{pathFor 'play'}}" class="btn btn-success btn-block animoot">Hai din nou!</a>
         </div>
       </div>
     </div>

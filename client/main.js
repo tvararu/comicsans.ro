@@ -18,8 +18,17 @@ Router.map(function() {
     template: 'play',
 
     onBeforeAction: function() {
-      Session.set('raffle', _.shuffle(Posts.find().fetch()));
-      Session.set('answerCount', 0);
+      if (this.ready()) {
+        Session.set('raffle', _.shuffle(Posts.find().fetch()));
+        Session.set('answerCount', 0);
+        this.render();
+      } else {
+        this.render('loading');
+      }
+    },
+
+    data: function () {
+      return Posts.find();
     }
   });
 
@@ -44,6 +53,19 @@ Router.map(function() {
 });
 
 Router.onBeforeAction('loading');
+
+Template.home.rendered = function () {
+  $('.animoot').velocity('transition.slideUpIn', { stagger: 250 });
+};
+
+Template.home.events({
+  'click #go': function () {
+    $.Velocity($('.animoot'), 'transition.slideUpOut', { stagger: 100 })
+      .then(function () {
+        Router.go('play');
+      });
+  }
+});
 
 if (window.location.href.indexOf('basehold=it') !== -1) {
   $('html').addClass('basehold');
