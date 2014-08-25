@@ -31,9 +31,19 @@ flat_silver ?= #BDC3C7
 flat_concrete ?= #95A5A6
 flat_asbestos ?= #7F8C8D
 
+.no-room
+  display: none
+
+@media (max-height: 28em)
+  .no-room
+    display: block
+  .yes-room
+    display: none
+
 html, body
   width: 100%
   height: 100%
+  overflow: hidden
 
 body
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
@@ -71,12 +81,19 @@ html.basehold body
   &:active:after
     display: none
 
-h1
-  font-size: 1.5em
+h1, h2, h3, h4, h5, h6
   line-height: 2em
   text-align: center
   margin: 0
   margin-top: 1em
+
+h1
+  font-size: 1.5em
+
+h2, h3, h4, h5, h6
+  line-height: 1.5em
+  font-size: 1em
+  margin: 0
 
 p
   margin-top: 1.5em
@@ -105,8 +122,11 @@ p
   &:hover
     background: flat_pomegranate
 
-h1, h2, h3, h4, h5, h6, .headline
+h1, h2, h3, h4, h5, h6, .headline, .fancy
   font-family: 'Trocchi', Georgia, serif
+
+.headline
+  height: 12em
 
 .answers
   ul
@@ -117,3 +137,21 @@ h1, h2, h3, h4, h5, h6, .headline
 
 .animoot
   opacity: 0
+
+.social-btns
+  margin: 1.5em 0
+
+.btn-facebook
+.btn-twitter
+  color: white
+  &:hover
+    color: white
+
+.btn-facebook
+  background: #3b5998
+  &:hover, &:active
+    background: lighten(@background, 10%)
+.btn-twitter
+  background: #4099FF
+  &:hover, &:active
+    background: lighten(@background, 10%)

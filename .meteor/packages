@@ -9,3 +9,5 @@ bootstrap-3
 iron-router
 fast-render
 publish-counts
+fastclick
+font-awesome

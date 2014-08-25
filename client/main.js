@@ -43,6 +43,17 @@ Router.map(function() {
     }
   });
 
+  this.route('winrar', {
+    path: '/winrar',
+    template: 'winrar',
+
+    onBeforeAction: function() {
+      if (!Session.get('postCount')) {
+        this.redirect('home');
+      }
+    }
+  });
+
   this.route('answers', {
     path: '/answers',
     template: 'answers',
@@ -55,15 +66,18 @@ Router.map(function() {
 Router.onBeforeAction('loading');
 
 Template.home.rendered = function () {
+  FastClick.attach(document.body);
   $('.animoot').velocity('transition.slideUpIn', { stagger: 250 });
 };
 
 Template.home.events({
   'click #go': function () {
-    $.Velocity($('.animoot'), 'transition.slideUpOut', { stagger: 100 })
-      .then(function () {
+    $('.animoot').velocity('transition.bounceUpOut', {
+      stagger: 250,
+      'complete': function () {
         Router.go('play');
-      });
+      }
+    });
   }
 });
 

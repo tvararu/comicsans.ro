@@ -5,7 +5,9 @@
       "bootstrap-3": {},
       "iron-router": {},
       "fast-render": {},
-      "publish-counts": {}
+      "publish-counts": {},
+      "fastclick": {},
+      "font-awesome": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -25,8 +27,18 @@
       },
       "publish-counts": {
         "git": "https://github.com/percolatestudio/publish-counts.git",
-        "tag": "v0.2.2",
-        "commit": "45cf58d47a34b06d2788e30f140b6392644f6199"
+        "tag": "v0.2.5",
+        "commit": "a2a01e415a149128b8b6ed24d5c45ac69f292adb"
+      },
+      "fastclick": {
+        "git": "https://github.com/percolatestudio/meteor-fastclick",
+        "tag": "v0.6.7",
+        "commit": "fcb3bfd34d9f6874e626b4e24e8f54107938db41"
+      },
+      "font-awesome": {
+        "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
+        "tag": "v4.1.0",
+        "commit": "ce6b1e92715d1938babc5d69c655c17e387f5926"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",

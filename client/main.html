@@ -1,15 +1,20 @@
 <head>
   <meta charset="utf8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <title>Comicsans.ro | Times New Roman sau știri pe bune?</title>
   <link href='http://fonts.googleapis.com/css?family=Trocchi&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 
 <template name="layout">
-  <div class="container">
-    {{> yield}}
+  <div class="no-room text-center">
+    <h1>N-am loc pe verticală!<br>Fă fereastra de browser mai înaltă.</h1>
+  </div>
+  <div class="yes-room">
+    <div class="container">
+      {{> yield}}
+    </div>
   </div>
 </template>
 

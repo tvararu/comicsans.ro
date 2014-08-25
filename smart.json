@@ -3,6 +3,8 @@
     "bootstrap-3": {},
     "iron-router": {},
     "fast-render": {},
-    "publish-counts": {}
+    "publish-counts": {},
+    "fastclick": {},
+    "font-awesome": {}
   }
 }
