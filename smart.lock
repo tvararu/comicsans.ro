@@ -7,7 +7,8 @@
       "fast-render": {},
       "publish-counts": {},
       "fastclick": {},
-      "font-awesome": {}
+      "font-awesome": {},
+      "GAnalytics": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -39,6 +40,11 @@
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
         "tag": "v4.1.0",
         "commit": "ce6b1e92715d1938babc5d69c655c17e387f5926"
+      },
+      "GAnalytics": {
+        "git": "https://github.com/datariot/meteor-ganalytics.git",
+        "tag": "v0.2.0",
+        "commit": "2d5e48d5cc4c2f88edd40c0b2341d378bd4a702b"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",
