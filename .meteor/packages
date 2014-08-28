@@ -7,7 +7,5 @@ standard-app-packages
 stylus
 mrt:bootstrap-3@3.2.0-1
 cmather:iron-router@0.8.2
-fast-render
-publish-counts
 percolatestudio:fastclick@0.6.7
 natestrauser:font-awesome@4.1.0
