@@ -25,8 +25,8 @@ logging@1.0.2
 meteor@1.0.2
 minifiers@1.0.2
 minimongo@1.0.1
+mizzao:bootstrap-3@3.2.0
 mongo-livedata@1.0.3
-mrt:bootstrap-3@3.2.0-1
 natestrauser:font-awesome@4.1.1
 observe-sequence@1.0.1
 ordered-dict@1.0.0
