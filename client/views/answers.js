@@ -3,6 +3,6 @@ Template.answers.helpers({
     return Answers.find({}, { sort: { submitted: -1 } });
   },
   count: function () {
-    return Counts.get('answersCount');
+    return '???';
   }
 });
