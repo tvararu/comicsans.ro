@@ -10,11 +10,7 @@ Router.configure({
 Router.map(function() {
   this.route('home', {
     path: '/',
-    template: 'home',
-
-    onAfterAction: function () {
-      GAnalytics.pageview();
-    }
+    template: 'home'
   });
 
   this.route('play', {
