@@ -2,8 +2,8 @@ Scores = new Meteor.Collection('scores');
 
 Meteor.methods({
   submitScore: function(value) {
-    if (!value) {
-      throw new Meteor.Error(422, 'No value submitted.');
+    if (value === undefined || typeof(value) !== 'number') {
+      throw new Meteor.Error(422, 'Invalid value.');
     }
 
     var maxScore = Posts.find().count();

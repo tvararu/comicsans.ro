@@ -1,19 +1,55 @@
 <template name="stats">
   <div class="stats">
-    <h1>
-      Răspunsuri date până acum: <strong class="count">{{count}}</strong>.
-      <br>
-      Iată ultimele 10:
-    </h1>
-    <hr>
-    <ul>
-      {{#each answers}}
-        {{> answer}}
-      {{/each}}
-    </ul>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="text-center">
+          Răspunsuri înregistrate: <strong class="count">{{answersCount}}</strong>.
+          <br>
+          Iată ultimele 10, în timp real, cu cele corecte pe fundal verde.
+        </p>
+        <table class="table">
+          <thead>
+            <tr>
+              <td><i class="fa fa-fw fa-question"></i></td>
+              <td>Articol</td>
+              <td>Ora</td>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each answers}}
+              {{> answer}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <p class="text-center">
+          Scoruri înregistrate: <strong class="count">{{scoresCount}}</strong>.
+          <br>
+          Iată ultimele 10, în timp real, cu cele de maxim pe fundal verde.
+        </p>
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Scor</td>
+              <td>Data și Ora</td>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each scores}}
+              {{> highscore}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </template>
 
 <template name="answer">
-  <li>postId: {{postId}}, fake: {{fake}}, time: {{submitted}}</li>
+  <tr class="{{isCorrectRow}}"><td><i class="fa fa-fw {{isCorrectIcon}}"></i></td><td>{{articleSnippet}}</td><td>{{submitted}}</td></tr>
+</template>
+
+<template name="highscore">
+  <tr class="{{maxScoreRow}}"><td>{{value}}</td><td>{{submitted}}</td></tr>
 </template>
