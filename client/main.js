@@ -62,6 +62,7 @@ Router.map(function() {
     path: '/answers',
     template: 'answers',
     waitOn: function () {
+      Meteor.subscribe('scores');
       return Meteor.subscribe('answers');
     }
   });

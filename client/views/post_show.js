@@ -31,6 +31,7 @@ Template.postShow.events({
             Session.set('answerCount', answerCount + 1);
             if (Session.get('answerCount') === Session.get('raffle').length) {
               // ZOMG HAX this guy got everything right.
+              Meteor.call('submitScore', Session.get('answerCount'));
               $('.play')
                 .velocity('transition.bounceRightOut', {
                   stagger: window.app.defaults.animationDuration / 3,
@@ -48,6 +49,9 @@ Template.postShow.events({
           duration: window.app.defaults.animationDuration
         });
     } else {
+      // Wrong answer, bub.
+      Meteor.call('submitScore', Session.get('answerCount'));
+
       $('.headline')
         .velocity('transition.whirlOut', {
           display: null,

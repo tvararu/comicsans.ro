@@ -20,7 +20,7 @@ Meteor.methods({
       submitted: new Date().getTime()
     });
 
-    // create the answer, save the id
+    // Create the answer, save the id
     answer._id = Answers.insert(answer);
 
     return answer._id;
