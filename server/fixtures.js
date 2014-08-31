@@ -72,7 +72,7 @@ if (Posts.find().count() === 0) {
     title: 'Mircea Sandu va oferi bilete la meciul România - Ungaria familiei copilului ucis de câinii comunitari',
     url: 'http://www.prosport.ro/fotbal-intern/nationala/mircea-sandu-va-oferi-bilete-la-meciul-romania-ungaria-familiei-copilului-ucis-de-cainii-comunitari-11292745'
   }, {
-    title: 'Primăria Satu Mare a inaugurat 10 cosuri de gunoi',
+    title: 'Primăria Satu Mare a inaugurat 10 coșuri de gunoi',
     url: 'http://www.hotnews.ro/stiri-administratie_locala-15372283-primaria-satu-mare-inaugurat-10-cosuri-gunoi.htm'
   }, {
     title: 'Radio Trinitas: prima aplicație oficială a Patriarhiei Romane',
@@ -86,6 +86,9 @@ if (Posts.find().count() === 0) {
   }, {
     title: 'Proteste la Londra, din cauza gazelor de șist. 6 persoane s-au lipit cu super glue de o clădire',
     url: 'http://stirileprotv.ro/stiri/international/proteste-la-londra-din-cauza-gazelor-de-sist-6-persoane-s-au-lipit-cu-super-glue-de-o-cladire.html'
+  }, {
+    title: 'Un bărbat din Cluj a furat o ambulanță, în timp ce echipajul acorda primul ajutor',
+    url: 'http://www.hotnews.ro/stiri-esential-18002698-barbat-din-cluj-furat-ambulanta-timp-echipajul-acorda-primul-ajutor-urmat-pare-desprins-din-filme.htm'
   }];
 
   _.each(tnr, function(post) {
