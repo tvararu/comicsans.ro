@@ -112,12 +112,16 @@ p
 
 .btn-success
   background: flat_emerald
+  &:active, &:focus
+    background: @background
   transition: background .1s linear
   &:hover
     background: flat_nephritis
 
 .btn-danger
   background: flat_alizarin
+  &:active, &:focus
+    background: @background
   transition: background .1s linear
   &:hover
     background: flat_pomegranate
@@ -147,14 +151,15 @@ h1, h2, h3, h4, h5, h6, .headline, .fancy
 .btn-facebook
 .btn-twitter
   color: white
+  transition: background .1s linear
   &:hover
     color: white
 
 .btn-facebook
   background: #3b5998
   &:hover, &:active
-    background: lighten(@background, 10%)
+    background: darken(@background, 10%)
 .btn-twitter
   background: #4099FF
   &:hover, &:active
-    background: lighten(@background, 10%)
+    background: darken(@background, 10%)
