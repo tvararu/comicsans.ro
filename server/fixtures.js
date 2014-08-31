@@ -63,7 +63,7 @@ if (Posts.find().count() === 0) {
     title: 'Băsescu, aprobat de Guță: "S-a aliniat majorității. Manelele are linii melodice melodioase"',
     url: 'http://www.antena3.ro/romania/basescu-aprobat-de-guta-s-a-aliniat-majoritatii-manelele-are-linii-melodice-melodioase-92934.html'
   }, {
-    title: 'Primăria din Borsa a fost închisă pe perioadă nedeterminată dupa o decizie a primarului. Prefectul judetului: Primăria nu e închisă, s-a pierdut cheia de la intrare',
+    title: 'Primăria din Borsa a fost închisă pe perioadă nedeterminată după o decizie a primarului. Prefectul județului: Primăria nu e închisă, s-a pierdut cheia de la intrare',
     url: 'http://www.hotnews.ro/stiri-esential-15413825-situatie-fara-precedent-intr-oras-din-romania-primaria-din-borsa-fost-inchisa-perioada-nedeterminata-dupa-decizie-primarului-prefectul-judetului-primaria-nu-inchisa-pierdut-cheia-intrare.htm'
   }, {
     title: 'Familia a comandat sicriu din aur pentru regele Cioabă',
