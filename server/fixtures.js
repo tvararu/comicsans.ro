@@ -57,7 +57,7 @@ if (Posts.find().count() === 0) {
     title: 'CNN l-a prezentat drept noul rege al țiganilor pe Patriarhul Daniel',
     url: 'http://www.cotidianul.ro/cnn-l-a-prezentat-drept-noul-rege-al-tiganilor-pe-patriarhul-daniel-223383/'
   }, {
-    title: 'Un barbat a fost impuscat in cap in timpul unei dezbateri aprinse despre filosofia lui Kant, la o coadă pentru bere',
+    title: 'Un bărbat a fost împușcat în cap în timpul unei dezbateri aprinse despre filosofia lui Kant, la o coadă pentru bere',
     url: 'http://www.hotnews.ro/stiri-international-15591171-rusia-barbat-fost-impuscat-cap-timpul-unei-dezbateri-aprinse-despre-filosofia-lui-kant-coada-pentru-bere.htm'
   }, {
     title: 'Băsescu, aprobat de Guță: "S-a aliniat majorității. Manelele are linii melodice melodioase"',
@@ -76,7 +76,7 @@ if (Posts.find().count() === 0) {
     url: 'http://www.hotnews.ro/stiri-administratie_locala-15372283-primaria-satu-mare-inaugurat-10-cosuri-gunoi.htm'
   }, {
     title: 'Radio Trinitas: prima aplicație oficială a Patriarhiei Romane',
-    url: 'http://www.stiri-azi.ro/ziare/articol/articol/radio-trinitas-prima-aplicatie-oficiala-a-patriarhiei-romane/sumar-articol/87536480/'
+    url: 'http://www.criserb.com/blog/radio-trinitas-prima-aplicatie-oficiala-a-patriarhiei-romane.html'
   }, {
     title: 'Comisia Europeană a inclus România pe harta trenurilor de mare viteză',
     url: 'http://www.digi24.ro/Stiri/Digi24/Actualitate/Stiri/Comisia+Europeana+a+inclus+Romania+pe+harta+trenurilor+de+mare+v'
@@ -89,6 +89,9 @@ if (Posts.find().count() === 0) {
   }, {
     title: 'Un bărbat din Cluj a furat o ambulanță, în timp ce echipajul acorda primul ajutor',
     url: 'http://www.hotnews.ro/stiri-esential-18002698-barbat-din-cluj-furat-ambulanta-timp-echipajul-acorda-primul-ajutor-urmat-pare-desprins-din-filme.htm'
+  }, {
+    title: 'Bătaie cu cuţite la sibiu! S-au încăierat din cauza unei flatulenţe!',
+    url: 'http://libertatea.ro/detalii/articol/bataie-cu-cutite-la-sibiu-incaierare-din-cauza-unei-flatulente-incident-sibiu-496033.html'
   }];
 
   _.each(tnr, function(post) {
