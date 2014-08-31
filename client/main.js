@@ -18,12 +18,16 @@ Router.map(function() {
     template: 'play',
 
     onBeforeAction: function() {
-      if (this.ready()) {
-        Session.set('raffle', _.shuffle(Posts.find().fetch()));
-        Session.set('answerCount', 0);
-        this.render();
+      if (!Session.get('postCount')) {
+        this.redirect('home');
       } else {
-        this.render('loading');
+        if (this.ready()) {
+          Session.set('raffle', _.shuffle(Posts.find().fetch()));
+          Session.set('answerCount', 0);
+          this.render();
+        } else {
+          this.render('loading');
+        }
       }
     },
 
