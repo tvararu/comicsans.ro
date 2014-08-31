@@ -67,13 +67,17 @@ Router.onBeforeAction('loading');
 
 Template.home.rendered = function () {
   FastClick.attach(document.body);
-  $('.animoot').velocity('transition.slideUpIn', { stagger: 250 });
+  $('.animoot').velocity('transition.bounceUpIn', {
+    stagger: window.app.defaults.animationDuration / 3,
+    duration: window.app.defaults.animationDuration
+  });
 };
 
 Template.home.events({
   'click #go': function () {
     $('.animoot').velocity('transition.bounceUpOut', {
-      stagger: 250,
+      stagger: window.app.defaults.animationDuration / 3,
+      duration: window.app.defaults.animationDuration,
       'complete': function () {
         Router.go('play');
       }

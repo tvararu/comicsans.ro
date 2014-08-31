@@ -9,7 +9,7 @@ Template.postShow.events({
     e.preventDefault();
 
     $(e.target)
-      .velocity('callout.pulse', { duration: 200 });
+      .velocity('callout.pulse', { duration: window.app.defaults.animationDuration / 3 });
 
     var answeredFake = $(e.target).hasClass('fake');
 
@@ -22,10 +22,9 @@ Template.postShow.events({
 
     if ((this.fake && answeredFake) || (!this.fake && !answeredFake)) {
       // If the player got it right.
-
       $('.headline')
         .velocity('transition.whirlOut', {
-          duration: 500,
+          duration: window.app.defaults.animationDuration / 2,
           display: null,
           'complete': function () {
             var answerCount = Session.get('answerCount');
@@ -34,7 +33,8 @@ Template.postShow.events({
               // ZOMG HAX this guy got everything right.
               $('.play')
                 .velocity('transition.bounceRightOut', {
-                  stagger: 250,
+                  stagger: window.app.defaults.animationDuration / 3,
+                  duration: window.app.defaults.animationDuration,
                   'complete': function () {
                     Router.go('winrar');
                   }
@@ -45,16 +45,18 @@ Template.postShow.events({
           }
         })
         .velocity('transition.whirlIn', {
-          duration: 500
+          duration: window.app.defaults.animationDuration
         });
     } else {
       $('.headline')
         .velocity('transition.whirlOut', {
           display: null,
+          duration: window.app.defaults.animationDuration / 2,
           'complete': function () {
             $('.play')
               .velocity('transition.bounceRightOut', {
-                stagger: 250,
+                stagger: window.app.defaults.animationDuration / 3,
+                duration: window.app.defaults.animationDuration,
                 'complete': function () {
                   Router.go('gameover');
                 }
@@ -66,5 +68,8 @@ Template.postShow.events({
 });
 
 Template.postShow.rendered = function () {
-  $('.animoot').velocity('transition.bounceUpIn', { stagger: 250 });
+  $('.animoot').velocity('transition.bounceUpIn', {
+    stagger: window.app.defaults.animationDuration / 3,
+    duration: window.app.defaults.animationDuration,
+  });
 };
