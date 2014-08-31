@@ -90,6 +90,22 @@ Template.home.events({
   }
 });
 
+Template.layout.events({
+  'click .btn-about': function () {
+    $('.animoot').velocity('transition.bounceUpOut', {
+      stagger: window.app.defaults.animationDuration / 3,
+      duration: window.app.defaults.animationDuration,
+      'complete': function () {
+        if (Router.current().path === '/about') {
+          Router.go('home');
+        } else {
+          Router.go('about');
+        }
+      }
+    });
+  }
+});
+
 if (window.location.href.indexOf('basehold=it') !== -1) {
   $('html').addClass('basehold');
 }
