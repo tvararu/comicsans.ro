@@ -75,7 +75,7 @@ if (Posts.find().count() === 0) {
     title: 'Primăria Satu Mare a inaugurat 10 coșuri de gunoi',
     url: 'http://www.hotnews.ro/stiri-administratie_locala-15372283-primaria-satu-mare-inaugurat-10-cosuri-gunoi.htm'
   }, {
-    title: 'Radio Trinitas: prima aplicație oficială a Patriarhiei Romane',
+    title: 'Radio Trinitas: prima aplicație oficială a Patriarhiei Române',
     url: 'http://www.criserb.com/blog/radio-trinitas-prima-aplicatie-oficiala-a-patriarhiei-romane.html'
   }, {
     title: 'Comisia Europeană a inclus România pe harta trenurilor de mare viteză',
@@ -90,7 +90,7 @@ if (Posts.find().count() === 0) {
     title: 'Un bărbat din Cluj a furat o ambulanță, în timp ce echipajul acorda primul ajutor',
     url: 'http://www.hotnews.ro/stiri-esential-18002698-barbat-din-cluj-furat-ambulanta-timp-echipajul-acorda-primul-ajutor-urmat-pare-desprins-din-filme.htm'
   }, {
-    title: 'Bătaie cu cuţite la sibiu! S-au încăierat din cauza unei flatulenţe!',
+    title: 'Bătaie cu cuţite la Sibiu! S-au încăierat din cauza unei flatulenţe!',
     url: 'http://libertatea.ro/detalii/articol/bataie-cu-cutite-la-sibiu-incaierare-din-cauza-unei-flatulente-incident-sibiu-496033.html'
   }];
 
