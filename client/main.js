@@ -61,6 +61,11 @@ Router.map(function() {
       return Meteor.subscribe('answers');
     }
   });
+
+  this.route('about', {
+    path: '/about',
+    template: 'about'
+  });
 });
 
 Router.onBeforeAction('loading');
