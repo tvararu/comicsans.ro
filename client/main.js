@@ -58,9 +58,9 @@ Router.map(function() {
     }
   });
 
-  this.route('answers', {
-    path: '/answers',
-    template: 'answers',
+  this.route('stats', {
+    path: '/stats',
+    template: 'stats',
     waitOn: function () {
       Meteor.subscribe('scores');
       return Meteor.subscribe('answers');

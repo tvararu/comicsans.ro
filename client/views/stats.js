@@ -1,8 +1,8 @@
-Template.answers.helpers({
+Template.stats.helpers({
   answers: function() {
     return Answers.find({}, { sort: { submitted: -1 } });
   },
   count: function () {
-    return '???';
+    return Counts.get('answersCount');
   }
 });

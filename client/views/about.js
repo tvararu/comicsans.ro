@@ -4,3 +4,10 @@ Template.about.rendered = function () {
     duration: window.app.defaults.animationDuration
   });
 };
+
+Template.about.events({
+  'click .github-link': function (e) {
+    e.preventDefault();
+    $('.bonus').removeClass('hidden');
+  }
+});
