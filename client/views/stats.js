@@ -35,23 +35,21 @@ Template.stats.rendered = function() {
   ).Doughnut(doughnutData, {
     responsive: true
   });
-  Meteor.setTimeout(function () {
-    Deps.autorun(function () {
-      var s0to10 = Counts.get('scoresCount0to10');
-      var s11to15 = Counts.get('scoresCount11to15');
-      var s16to20 = Counts.get('scoresCount16to20');
-      var s21to25 = Counts.get('scoresCount21to25');
-      var s26to29 = Counts.get('scoresCount26to29');
-      var s30 = Counts.get('scoresCount30');
-      doughnutScores.segments[0].value = s0to10;
-      doughnutScores.segments[1].value = s11to15;
-      doughnutScores.segments[2].value = s16to20;
-      doughnutScores.segments[3].value = s21to25;
-      doughnutScores.segments[4].value = s26to29;
-      doughnutScores.segments[5].value = s30;
-      doughnutScores.update();
-    });
-  }, 1);
+  Deps.autorun(function () {
+    var s0to10 = Counts.get('scoresCount0to10');
+    var s11to15 = Counts.get('scoresCount11to15');
+    var s16to20 = Counts.get('scoresCount16to20');
+    var s21to25 = Counts.get('scoresCount21to25');
+    var s26to29 = Counts.get('scoresCount26to29');
+    var s30 = Counts.get('scoresCount30');
+    doughnutScores.segments[0].value = s0to10 || 1;
+    doughnutScores.segments[1].value = s11to15 || 1;
+    doughnutScores.segments[2].value = s16to20 || 1;
+    doughnutScores.segments[3].value = s21to25 || 1;
+    doughnutScores.segments[4].value = s26to29 || 1;
+    doughnutScores.segments[5].value = s30 || 1;
+    doughnutScores.update();
+  });
 };
 
 Template.stats.helpers({
