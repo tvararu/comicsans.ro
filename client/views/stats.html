@@ -1,75 +1,99 @@
 <template name="stats">
   <div class="row">
     <div class="stats">
-      <h1>Pagină în construcție. More goodies coming soon!</h1>
-      <div class="col-md-6">
-        <p>
-          Răspunsuri înregistrate: <strong class="count">{{answersCount}}</strong>.
-          <br>
-          Iată ultimele 10, în timp real, cu cele corecte pe fundal verde.
-        </p>
-        <table class="table">
-          <thead>
-            <tr>
-              <td><i class="fa fa-fw fa-question"></i></td>
-              <td>Articol</td>
-              <td>Ora</td>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each answers}}
-              {{> answer}}
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-sm-8">
-            <canvas class="chart" id="doughnut-chart-scores"></canvas>
-          </div>
-          <div class="col-sm-4">
-            <div class="legend">
-              <table class="table">
-                <tbody>
-                  <tr><td>0 - 10</td><td>{{getPublishedCount 'scoresCount0to10'}}</td></tr>
-                  <tr><td>11 - 15</td><td>{{getPublishedCount 'scoresCount11to15'}}</td></tr>
-                  <tr><td>16 - 20</td><td>{{getPublishedCount 'scoresCount16to20'}}</td></tr>
-                  <tr><td>21 - 25</td><td>{{getPublishedCount 'scoresCount21to25'}}</td></tr>
-                  <tr><td>26 - 29</td><td>{{getPublishedCount 'scoresCount26to29'}}</td></tr>
-                  <tr><td>30</td><td>{{getPublishedCount 'scoresCount30'}}</td></tr>
-                </tbody>
-              </table>
+      <h1 class="fixedsticky">Câteva statistici mișto.</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>
+            Răspunsuri înregistrate: <strong class="count">{{ getPublishedCount 'answersCount' }}</strong>.
+          </h3>
+          {{#each posts}}
+            {{> postWithAnswers}}
+          {{/each}}
+        </div>
+        <div class="col-md-6">
+          <div>
+            <h3>
+              Jocuri finalizate: <strong class="count">{{ getPublishedCount 'scoresCount' }}</strong>.
+            </h3>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="panel panel-default panel-chart">
+                  <h3 class="panel-heading">Toate scorurile.</h3>
+                  <div class="panel-body">
+                    <canvas class="chart" id="doughnut-chart-scores"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="panel panel-default panel-chart">
+                  <h3 class="panel-heading">Scoruri >= 11.</h3>
+                  <div class="panel-body">
+                    <canvas class="chart" id="doughnut-chart-scores-no-bottom"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="legend">
+                  <table class="table">
+                    <thead>
+                      <tr><td>Categorie scor final</td><td>Număr</td></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>0 - 10</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
+                      <tr><td>11 - 15</td><td>{{ getPublishedCount 'scoresCount11to15' }}</td></tr>
+                      <tr><td>16 - 20</td><td>{{ getPublishedCount 'scoresCount16to20' }}</td></tr>
+                      <tr><td>21 - 25</td><td>{{ getPublishedCount 'scoresCount21to25' }}</td></tr>
+                      <tr><td>26 - 29</td><td>{{ getPublishedCount 'scoresCount26to29' }}</td></tr>
+                      <tr><td>30</td><td>{{ getPublishedCount 'scoresCount30' }}</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <p>
-          Scoruri înregistrate: <strong class="count">{{scoresCount}}</strong>.
-          <br>
-          Iată ultimele 10, în timp real, cu cele de maxim pe fundal verde.
-        </p>
-        <table class="table">
-          <thead>
-            <tr>
-              <td>Scor</td>
-              <td>Data și Ora</td>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each scores}}
-              {{> highscore}}
-            {{/each}}
-          </tbody>
-        </table>
       </div>
+      <p><strong>Notă:</strong> comicsans.ro nu salvează datele personale ale utilizatorilor. Sunt înregistrate informații doar de două feluri:
+      </p>
+      <ul>
+        <li><strong>râspunsuri</strong>, la care se stochează: întrebarea vizată, valoarea (true / false), și ora exactă;</li>
+        <li><strong>scoruri</strong>, la care se stochează: valoarea (0 la 30), și ora exactă.</li>
+      </ul>
+      <p>Astfel, toate interacțiunile înregistrate sunt anonime. Acestea sunt folosite cu scop de divertisment, pentru a genera statisticile de pe această pagină.</p>
+      <p>Cu toate acestea, comicsans.ro folosește Google Analytics, și API-urile de la Facebook și Twitter (pentru dialogurile de share). Acestea vă înregistrează date, cel mai probabil personale, cum ar fi IP-ul, browserul și locația pe glob.</p>
+      <p>Dacă doriți să vă protejați, folosiți <a href="https://www.ghostery.com/en/" target="_blank">Ghostery</a> sau alte extensii asemănătoare.</p>
     </div>
   </div>
 </template>
 
-<template name="answer">
-  <tr class="{{isCorrectRow}}"><td><i class="fa fa-fw {{isCorrectIcon}}"></i></td><td>{{articleSnippet}}</td><td>{{submitted}}</td></tr>
-</template>
-
-<template name="highscore">
-  <tr class="{{maxScoreRow}}"><td>{{value}}</td><td>{{submitted}}</td></tr>
+<template name="postWithAnswers">
+  <div class="panel panel-post {{ postClass }}">
+    <h3 class="panel-heading">{{ title }}</h3>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-5 text-left">
+          <strong>"E pe bune."</strong>
+          <br>
+          {{ answersTruePercentage }}%
+        </div>
+        <div class="col-xs-2 text-center">
+          <strong>Total</strong>
+          <br>
+          <strong>{{ answersCount }}</strong>
+        </div>
+        <div class="col-xs-5 text-right">
+          <strong>"E fake!"</strong>
+          <br>
+          {{ answersFalsePercentage }}%
+        </div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" style="width: {{ answersTruePercentage }}%"></div>
+        <div class="progress-bar progress-bar-danger" style="width: {{ answersFalsePercentage }}%"></div>
+      </div>
+    </div>
+  </div>
 </template>

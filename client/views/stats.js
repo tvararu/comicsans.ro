@@ -35,72 +35,93 @@ Template.stats.rendered = function() {
   ).Doughnut(doughnutData, {
     responsive: true
   });
-  Deps.autorun(function () {
-    var s0to10 = Counts.get('scoresCount0to10');
-    var s11to15 = Counts.get('scoresCount11to15');
-    var s16to20 = Counts.get('scoresCount16to20');
-    var s21to25 = Counts.get('scoresCount21to25');
-    var s26to29 = Counts.get('scoresCount26to29');
-    var s30 = Counts.get('scoresCount30');
-    doughnutScores.segments[0].value = s0to10 || 1;
-    doughnutScores.segments[1].value = s11to15 || 1;
-    doughnutScores.segments[2].value = s16to20 || 1;
-    doughnutScores.segments[3].value = s21to25 || 1;
-    doughnutScores.segments[4].value = s26to29 || 1;
-    doughnutScores.segments[5].value = s30 || 1;
-    doughnutScores.update();
+
+  var doughnutData2 = [{
+    value: 1,
+    color: "#f39c12",
+    highlight: "#d35400",
+    label: "11-15"
+  }, {
+    value: 1,
+    color: "#f1c40f",
+    highlight: "#f39c12",
+    label: "16-20"
+  }, {
+    value: 1,
+    color: "#1abc9c",
+    highlight: "#16a085",
+    label: "21-25"
+  }, {
+    value: 1,
+    color: "#3498db",
+    highlight: "#2980b9",
+    label: "26-29"
+  }, {
+    value: 1,
+    color: "#9b59b6",
+    highlight: "#8e44ad",
+    label: "30"
+  }];
+  var doughnutScores2 = new Chart(
+    document.getElementById('doughnut-chart-scores-no-bottom').getContext('2d')
+  ).Doughnut(doughnutData2, {
+    responsive: true
   });
+  Deps.autorun(function () {
+    var s0to10  = Counts.get('scoresCount0to10')  || 1;
+    var s11to15 = Counts.get('scoresCount11to15') || 1;
+    var s16to20 = Counts.get('scoresCount16to20') || 1;
+    var s21to25 = Counts.get('scoresCount21to25') || 1;
+    var s26to29 = Counts.get('scoresCount26to29') || 1;
+    var s30     = Counts.get('scoresCount30')     || 1;
+
+    doughnutScores.segments[0].value = s0to10;
+    doughnutScores.segments[1].value = s11to15;
+    doughnutScores.segments[2].value = s16to20;
+    doughnutScores.segments[3].value = s21to25;
+    doughnutScores.segments[4].value = s26to29;
+    doughnutScores.segments[5].value = s30;
+    doughnutScores.update();
+
+    doughnutScores2.segments[0].value = s11to15;
+    doughnutScores2.segments[1].value = s16to20;
+    doughnutScores2.segments[2].value = s21to25;
+    doughnutScores2.segments[3].value = s26to29;
+    doughnutScores2.segments[4].value = s30;
+    doughnutScores2.update();
+  });
+
+  $('.fixedsticky').fixedsticky();
 };
 
 Template.stats.helpers({
-  answers: function() {
-    return Answers.find({}, {
-      sort: {
-        submitted: -1
-      }
-    });
-  },
-  answersCount: function() {
-    return Counts.get('answersCount');
-  },
-  scores: function() {
-    return Scores.find({}, {
-      sort: {
-        submitted: -1
-      }
-    });
-  },
-  scoresCount: function() {
-    return Counts.get('scoresCount');
+  'posts': function () {
+    return Posts.find();
   }
 });
 
-Template.answer.helpers({
-  'submitted': function() {
-    return (new Date(this.submitted)).toString().slice(16, 25);
+Template.postWithAnswers.helpers({
+  'answersCount': function () {
+    return Counts.get('answers' + this._id);
   },
-  'isCorrectIcon': function() {
-    return (this.fake === 'true') ? 'fa-times text-danger' : 'fa-check text-success';
+  'answersTrueCount': function () {
+    return Counts.get('answersTrue' + this._id);
   },
-  'isCorrectRow': function() {
-    return (this.fake === Posts.findOne(this.postId).fake.toString()) ? 'success' : '';
+  'answersTruePercentage': function () {
+    var total = Counts.get('answers' + this._id);
+    return Math.floor(100 * ( Counts.get('answersTrue' + this._id) / total ));
   },
-  articleSnippet: function() {
-    return Posts.findOne(this.postId).title.slice(0, 35) + "...";
+  'answersFalseCount': function () {
+    return Counts.get('answers' + this._id) - Counts.get('answersTrue' + this._id);
   },
-  articleUrl: function() {
-    return Posts.findOne(this.postId).url;
-  }
-});
-
-Template.highscore.helpers({
-  'value': function() {
-    return this.value + '/' + Posts.find().count();
+  'answersFalsePercentage': function () {
+    var total = Counts.get('answers' + this._id);
+    return Math.ceil(100 * (
+        (Counts.get('answers' + this._id) - Counts.get('answersTrue' + this._id)) / total
+      )
+    );
   },
-  'maxScoreRow': function() {
-    return (this.value === Posts.find().count()) ? 'success' : '';
-  },
-  'submitted': function() {
-    return (new Date(this.submitted)).toString().slice(4, 25);
+  'postClass': function () {
+    return this.fake ? 'panel-danger' : 'panel-success';
   }
 });
