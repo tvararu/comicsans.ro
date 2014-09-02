@@ -42,6 +42,9 @@ if (Posts.find().count() === 0) {
   }, {
     title: 'CFR nu e în stare de nimic. Întârzierile trenurilor au fost afișate pe tabelă cu o oră întârziere',
     url: 'http://www.timesnewroman.ro/life-death/10386-cfr-nu-e-in-stare-de-nimic-intarzierile-trenurilor-au-fost-afisate-pe-tabela-cu-o-ora-intarziere'
+  }, {
+    title: 'Veşmintele de aur nasc confuzii! CNN l-a prezentat drept noul rege al țiganilor pe Patriarhul Daniel',
+    url: 'http://www.timesnewroman.ro/monden/10179-vesmintele-de-aur-nasc-confuzii-cnn-l-a-prezentat-drept-noul-rege-al-tiganilor-pe-patriarhul-daniel'
   }];
 
   var real = [{
@@ -53,9 +56,6 @@ if (Posts.find().count() === 0) {
   }, {
     title: 'Un cangur fugărit de copii în Arad a fost prins de polițiști, însă a murit în mașina unui agent: "Cel mai probabil a murit pe fondul stresului și al oboselii"',
     url: 'http://www.mediafax.ro/social/un-cangur-fugarit-de-copii-in-arad-a-fost-prins-de-politisti-insa-a-murit-in-masina-unui-agent-cel-mai-probabil-a-murit-pe-fondul-stresului-si-al-oboselii-11901626'
-  }, {
-    title: 'CNN l-a prezentat drept noul rege al țiganilor pe Patriarhul Daniel',
-    url: 'http://www.cotidianul.ro/cnn-l-a-prezentat-drept-noul-rege-al-tiganilor-pe-patriarhul-daniel-223383/'
   }, {
     title: 'Un bărbat a fost împușcat în cap în timpul unei dezbateri aprinse despre filosofia lui Kant, la o coadă pentru bere',
     url: 'http://www.hotnews.ro/stiri-international-15591171-rusia-barbat-fost-impuscat-cap-timpul-unei-dezbateri-aprinse-despre-filosofia-lui-kant-coada-pentru-bere.htm'
@@ -107,4 +107,21 @@ if (Posts.find().count() === 0) {
   _.each(allPosts, function(post) {
     Posts.insert(post);
   });
+} else {
+  // If posts have already been initialized.
+
+  // Find one post that I screwed up.
+  var cnn = Posts.findOne({ title: 'CNN l-a prezentat drept noul rege al țiganilor pe Patriarhul Daniel' });
+
+  if (cnn) {
+    console.log(cnn);
+    // If it's present in the database.
+    // Amend title, url, type, and add a timestamp to make result separation easier.
+    Posts.update(cnn._id, {
+      title: 'Veşmintele de aur nasc confuzii! CNN l-a prezentat drept noul rege al țiganilor pe Patriarhul Daniel',
+      url: 'http://www.timesnewroman.ro/monden/10179-vesmintele-de-aur-nasc-confuzii-cnn-l-a-prezentat-drept-noul-rege-al-tiganilor-pe-patriarhul-daniel',
+      fake: true,
+      updatedAt: (+new Date())
+    });
+  }
 }
