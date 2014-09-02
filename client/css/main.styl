@@ -34,12 +34,6 @@ flat_asbestos ?= #7F8C8D
 .no-room
   display: none
 
-@media (max-height: 28em)
-  .no-room
-    display: block
-  .yes-room
-    display: none
-
 html, body
   width: 100%
   height: 100%
@@ -57,6 +51,9 @@ body
 
   @media (max-width: 767px)
     font-size: 20px
+
+  @media (max-width: 767px) and (max-height: 480px)
+    font-size: 14px
 
 html.basehold body
   position: relative
