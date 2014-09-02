@@ -96,6 +96,12 @@ Template.home.events({
   }
 });
 
+Template.home.helpers({
+  'postsReady': function () {
+    return (Posts.find().count() > 0) ? '' : 'disabled';
+  }
+});
+
 Template.layout.events({
   'click .btn-about': function () {
     $('.animoot').velocity('transition.bounceUpOut', {
