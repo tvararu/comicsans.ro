@@ -114,7 +114,6 @@ if (Posts.find().count() === 0) {
   var cnn = Posts.findOne({ title: 'CNN l-a prezentat drept noul rege al țiganilor pe Patriarhul Daniel' });
 
   if (cnn) {
-    console.log(cnn);
     // If it's present in the database.
     // Amend title, url, type, and add a timestamp to make result separation easier.
     Posts.update(cnn._id, {
