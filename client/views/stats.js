@@ -67,13 +67,13 @@ Template.stats.rendered = function() {
   ).Doughnut(doughnutData2, {
     responsive: true
   });
-  Deps.autorun(function () {
-    var s0to10  = Counts.get('scoresCount0to10')  || 1;
+  Deps.autorun(function() {
+    var s0to10 = Counts.get('scoresCount0to10') || 1;
     var s11to15 = Counts.get('scoresCount11to15') || 1;
     var s16to20 = Counts.get('scoresCount16to20') || 1;
     var s21to25 = Counts.get('scoresCount21to25') || 1;
     var s26to29 = Counts.get('scoresCount26to29') || 1;
-    var s30     = Counts.get('scoresCount30')     || 1;
+    var s30 = Counts.get('scoresCount30') || 1;
 
     doughnutScores.segments[0].value = s0to10;
     doughnutScores.segments[1].value = s11to15;
@@ -91,37 +91,61 @@ Template.stats.rendered = function() {
     doughnutScores2.update();
   });
 
-  $('.fixedsticky').fixedsticky();
+  if (window.innerWidth >= 992) {
+    var sticky = $('.sticky');
+    var footer = $('.disclaimer');
+    var page = $('.stats');
+
+    sticky.each(function (index, el) {
+      var $el = $(el);
+      $el.css('width', $el.parent().width());
+
+      page.on('scroll', function () {
+        if ($el.parent().offset().top <= 0) {
+          if (!$el.hasClass('fixed')) {
+            $el.addClass('fixed');
+          }
+          var diff = footer.offset().top - $el.height();
+          var top = (diff > 0) ? 0 : diff;
+          $el.css('top', top);
+        } else {
+          $el.removeClass('fixed');
+        }
+      });
+    });
+  }
 };
 
 Template.stats.helpers({
-  'posts': function () {
-    return Posts.find();
+  'fakePosts': function() {
+    return Posts.find({ fake: true });
+  },
+  'realPosts': function() {
+    return Posts.find({ fake: false });
   }
 });
 
 Template.postWithAnswers.helpers({
-  'answersCount': function () {
+  'answersCount': function() {
     return Counts.get('answers' + this._id);
   },
-  'answersTrueCount': function () {
+  'answersTrueCount': function() {
     return Counts.get('answersTrue' + this._id);
   },
-  'answersTruePercentage': function () {
+  'answersTruePercentage': function() {
     var total = Counts.get('answers' + this._id);
-    return Math.floor(100 * ( Counts.get('answersTrue' + this._id) / total ));
+    return Math.floor(100 * (Counts.get('answersTrue' + this._id) / total));
   },
-  'answersFalseCount': function () {
+  'answersFalseCount': function() {
     return Counts.get('answers' + this._id) - Counts.get('answersTrue' + this._id);
   },
-  'answersFalsePercentage': function () {
+  'answersFalsePercentage': function() {
     var total = Counts.get('answers' + this._id);
     return Math.ceil(100 * (
-        (Counts.get('answers' + this._id) - Counts.get('answersTrue' + this._id)) / total
-      )
-    );
+      (Counts.get('answers' + this._id) - Counts.get('answersTrue' + this._id)) / total
+    ));
   },
-  'postClass': function () {
+  'postClass': function() {
     return this.fake ? 'panel-danger' : 'panel-success';
   }
 });

@@ -1,18 +1,31 @@
 <template name="stats">
   <div class="row">
     <div class="stats">
-      <h1 class="fixedsticky">Câteva statistici mișto.</h1>
+      <h1>Câteva statistici mișto.</h1>
       <div class="row">
         <div class="col-md-6">
           <h3>
             Răspunsuri înregistrate: <strong class="count">{{ getPublishedCount 'answersCount' }}</strong>.
           </h3>
-          {{#each posts}}
-            {{> postWithAnswers}}
-          {{/each}}
+          <div class="btn-group btn-group-justified">
+            <a class="btn btn-success" href="#real" role="tab" data-toggle="tab">Știri pe bune</a>
+            <a class="btn btn-danger" href="#fake" role="tab" data-toggle="tab">Times New Roman</a>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane active" id="real">
+              {{#each realPosts}}
+                {{> postWithAnswers}}
+              {{/each}}
+            </div>
+            <div class="tab-pane" id="fake">
+              {{#each fakePosts}}
+                {{> postWithAnswers}}
+              {{/each}}
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
-          <div>
+          <div class="sticky">
             <h3>
               Jocuri finalizate: <strong class="count">{{ getPublishedCount 'scoresCount' }}</strong>.
             </h3>
@@ -56,15 +69,17 @@
           </div>
         </div>
       </div>
-      <p><strong>Notă:</strong> comicsans.ro nu salvează datele personale ale utilizatorilor. Sunt înregistrate informații doar de două feluri:
-      </p>
-      <ul>
-        <li><strong>râspunsuri</strong>, la care se stochează: întrebarea vizată, valoarea (true / false), și ora exactă;</li>
-        <li><strong>scoruri</strong>, la care se stochează: valoarea (0 la 30), și ora exactă.</li>
-      </ul>
-      <p>Astfel, toate interacțiunile înregistrate sunt anonime. Acestea sunt folosite cu scop de divertisment, pentru a genera statisticile de pe această pagină.</p>
-      <p>Cu toate acestea, comicsans.ro folosește Google Analytics, și API-urile de la Facebook și Twitter (pentru dialogurile de share). Acestea vă înregistrează date, cel mai probabil personale, cum ar fi IP-ul, browserul și locația pe glob.</p>
-      <p>Dacă doriți să vă protejați, folosiți <a href="https://www.ghostery.com/en/" target="_blank">Ghostery</a> sau alte extensii asemănătoare.</p>
+      <div class="disclaimer">
+        <p><strong>Notă:</strong> comicsans.ro nu salvează datele personale ale utilizatorilor. Sunt înregistrate informații doar de două feluri:
+        </p>
+        <ul>
+          <li><strong>râspunsuri</strong>, la care se stochează: întrebarea vizată, valoarea (true / false), și ora exactă;</li>
+          <li><strong>scoruri</strong>, la care se stochează: valoarea (0 la 30), și ora exactă.</li>
+        </ul>
+        <p>Astfel, toate interacțiunile înregistrate sunt anonime. Acestea sunt folosite cu scop de divertisment, pentru a genera statisticile de pe această pagină.</p>
+        <p>Cu toate acestea, comicsans.ro folosește Google Analytics, și API-urile de la Facebook și Twitter (pentru dialogurile de share). Acestea vă înregistrează date, cel mai probabil personale, cum ar fi IP-ul, browserul și locația pe glob.</p>
+        <p>Dacă doriți să vă protejați, folosiți <a href="https://www.ghostery.com/en/" target="_blank">Ghostery</a> sau alte extensii asemănătoare.</p>
+      </div>
     </div>
   </div>
 </template>
