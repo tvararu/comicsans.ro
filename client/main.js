@@ -86,6 +86,10 @@ Template.home.rendered = function () {
 
 Template.home.events({
   'click #go': function () {
+    if (Posts.find().count() === 0) {
+      // Posts aren't ready.
+      return;
+    }
     $('.animoot').velocity('transition.bounceUpOut', {
       stagger: window.app.defaults.animationDuration / 3,
       duration: window.app.defaults.animationDuration,
@@ -98,7 +102,7 @@ Template.home.events({
 
 Template.home.helpers({
   'postsReady': function () {
-    return (Posts.find().count() > 0) ? '' : 'disabled';
+    return (Posts.find().count() > 0);
   }
 });
 
