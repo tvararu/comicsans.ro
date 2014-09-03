@@ -6,63 +6,55 @@
         <div class="small">Pagină în construcție.</div>
       </h1>
       <hr>
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="sticky">
-            <h3>
-              Jocuri finalizate: <strong class="count">{{ scoresTotal }}</strong>.
-            </h3>
-            <hr>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="panel panel-default panel-chart">
-                  <h3 class="panel-heading">Toate scorurile.</h3>
-                  <div class="panel-body">
-                    <canvas class="chart" id="doughnut-chart-scores"></canvas>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="panel panel-default panel-chart">
-                  <h3 class="panel-heading">Scoruri >= 11.</h3>
-                  <div class="panel-body">
-                    <canvas class="chart" id="doughnut-chart-scores-no-bottom"></canvas>
-                  </div>
-                </div>
+      <div class="sticky">
+        <h3>
+          Jocuri finalizate: <strong class="count">{{ scoresTotal }}</strong>.
+        </h3>
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="panel panel-default panel-chart">
+              <h3 class="panel-heading">Toate scorurile.</h3>
+              <div class="panel-body">
+                <canvas class="chart" id="doughnut-chart-scores"></canvas>
               </div>
             </div>
-            <!--             <div class="panel panel-default">
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-default panel-chart">
+              <h3 class="panel-heading">Scoruri >= 11.</h3>
               <div class="panel-body">
-                <div class="legend">
-                  <table class="table">
-                    <thead>
-                      <tr><td>Categorie scor final</td><td>Număr</td></tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>0</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
-                      <tr><td>1 - 5</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
-                      <tr><td>11 - 15</td><td>{{ getPublishedCount 'scoresCount11to15' }}</td></tr>
-                      <tr><td>16 - 20</td><td>{{ getPublishedCount 'scoresCount16to20' }}</td></tr>
-                      <tr><td>21 - 25</td><td>{{ getPublishedCount 'scoresCount21to25' }}</td></tr>
-                      <tr><td>26 - 29</td><td>{{ getPublishedCount 'scoresCount26to29' }}</td></tr>
-                      <tr><td>30</td><td>{{ getPublishedCount 'scoresCount30' }}</td></tr>
-                    </tbody>
-                  </table>
-                </div>
+                <canvas class="chart" id="doughnut-chart-scores-no-bottom"></canvas>
               </div>
-            </div> -->
+            </div>
           </div>
         </div>
+        <!--             <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="legend">
+              <table class="table">
+                <thead>
+                  <tr><td>Categorie scor final</td><td>Număr</td></tr>
+                </thead>
+                <tbody>
+                  <tr><td>0</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
+                  <tr><td>1 - 5</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
+                  <tr><td>11 - 15</td><td>{{ getPublishedCount 'scoresCount11to15' }}</td></tr>
+                  <tr><td>16 - 20</td><td>{{ getPublishedCount 'scoresCount16to20' }}</td></tr>
+                  <tr><td>21 - 25</td><td>{{ getPublishedCount 'scoresCount21to25' }}</td></tr>
+                  <tr><td>26 - 29</td><td>{{ getPublishedCount 'scoresCount26to29' }}</td></tr>
+                  <tr><td>30</td><td>{{ getPublishedCount 'scoresCount30' }}</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div> -->
       </div>
       <hr>
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <h3>
-            Răspunsuri înregistrate: <strong class="count">{{ answersTotal }}</strong>.
-          </h3>
-          <hr>
-        </div>
-      </div>
+      <h3>
+        Răspunsuri înregistrate: <strong class="count">{{ answersTotal }}</strong>.
+      </h3>
+      <hr>
       <div class="row posts-stats">
         <div class="col-md-6">
           <h2>Știri pe bune</h2>
