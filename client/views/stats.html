@@ -7,31 +7,7 @@
       </h1>
       <hr>
       <div class="row">
-        <div class="col-md-6">
-          <h3>
-            Răspunsuri înregistrate: <strong class="count">{{ answersTotal }}</strong>.
-          </h3>
-          <hr>
-          <p class="text-center">Selectează o categorie.</p>
-          <div class="btn-group btn-group-justified">
-            <a class="btn btn-success" href="#real" role="tab" data-toggle="tab">Știri pe bune</a>
-            <a class="btn btn-danger" href="#fake" role="tab" data-toggle="tab">Times New Roman</a>
-          </div>
-          <hr>
-          <div class="tab-content">
-            <div class="tab-pane active" id="real">
-              {{#each realPosts}}
-                {{> postWithAnswers}}
-              {{/each}}
-            </div>
-            <div class="tab-pane" id="fake">
-              {{#each fakePosts}}
-                {{> postWithAnswers}}
-              {{/each}}
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-md-offset-3">
           <div class="sticky">
             <h3>
               Jocuri finalizate: <strong class="count">{{ scoresTotal }}</strong>.
@@ -55,39 +31,67 @@
                 </div>
               </div>
             </div>
-<!--             <div class="panel panel-default">
-  <div class="panel-body">
-    <div class="legend">
-      <table class="table">
-        <thead>
-          <tr><td>Categorie scor final</td><td>Număr</td></tr>
-        </thead>
-        <tbody>
-          <tr><td>0</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
-          <tr><td>1 - 5</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
-          <tr><td>11 - 15</td><td>{{ getPublishedCount 'scoresCount11to15' }}</td></tr>
-          <tr><td>16 - 20</td><td>{{ getPublishedCount 'scoresCount16to20' }}</td></tr>
-          <tr><td>21 - 25</td><td>{{ getPublishedCount 'scoresCount21to25' }}</td></tr>
-          <tr><td>26 - 29</td><td>{{ getPublishedCount 'scoresCount26to29' }}</td></tr>
-          <tr><td>30</td><td>{{ getPublishedCount 'scoresCount30' }}</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div> -->
+            <!--             <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="legend">
+                  <table class="table">
+                    <thead>
+                      <tr><td>Categorie scor final</td><td>Număr</td></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>0</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
+                      <tr><td>1 - 5</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
+                      <tr><td>11 - 15</td><td>{{ getPublishedCount 'scoresCount11to15' }}</td></tr>
+                      <tr><td>16 - 20</td><td>{{ getPublishedCount 'scoresCount16to20' }}</td></tr>
+                      <tr><td>21 - 25</td><td>{{ getPublishedCount 'scoresCount21to25' }}</td></tr>
+                      <tr><td>26 - 29</td><td>{{ getPublishedCount 'scoresCount26to29' }}</td></tr>
+                      <tr><td>30</td><td>{{ getPublishedCount 'scoresCount30' }}</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div> -->
           </div>
         </div>
       </div>
-      <div class="disclaimer">
-        <p><strong>Notă:</strong> comicsans.ro nu salvează datele personale ale utilizatorilor. Sunt înregistrate informații doar de două feluri:
-        </p>
-        <ul>
-          <li><strong>râspunsuri</strong>, la care se stochează: întrebarea vizată, valoarea (true / false), și ora exactă;</li>
-          <li><strong>scoruri</strong>, la care se stochează: valoarea (0 la 30), și ora exactă.</li>
-        </ul>
-        <p>Astfel, toate interacțiunile înregistrate sunt anonime. Acestea sunt folosite cu scop de divertisment, pentru a genera statisticile de pe această pagină.</p>
-        <p>Cu toate acestea, comicsans.ro folosește Google Analytics, și API-urile de la Facebook și Twitter (pentru dialogurile de share). Acestea vă înregistrează date, cel mai probabil personale, cum ar fi IP-ul, browserul și locația pe glob.</p>
-        <p>Dacă doriți să vă protejați, folosiți <a href="https://www.ghostery.com/en/" target="_blank">Ghostery</a> sau alte extensii asemănătoare.</p>
+      <hr>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h3>
+            Răspunsuri înregistrate: <strong class="count">{{ answersTotal }}</strong>.
+          </h3>
+          <hr>
+        </div>
+      </div>
+      <div class="row posts-stats">
+        <div class="col-md-6">
+          <h2>Știri pe bune</h2>
+          {{#each realPosts}}
+            {{> postWithAnswers}}
+          {{/each}}
+        </div>
+        <div class="col-md-6">
+          <h2>Times New Roman</h2>
+          {{#each fakePosts}}
+            {{> postWithAnswers}}
+          {{/each}}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="disclaimer">
+            <p><strong>Notă:</strong> comicsans.ro nu salvează datele personale ale utilizatorilor. Sunt înregistrate informații doar de două feluri:
+            </p>
+            <ul>
+              <li><strong>râspunsuri</strong>, la care se stochează: întrebarea vizată, valoarea (true / false), și ora exactă;</li>
+              <li><strong>scoruri</strong>, la care se stochează: valoarea (0 la 30), și ora exactă.</li>
+            </ul>
+            <p>Astfel, toate interacțiunile înregistrate sunt anonime. Acestea sunt folosite cu scop de divertisment, pentru a genera statisticile de pe această pagină.</p>
+            <p>Cu toate acestea, comicsans.ro folosește Google Analytics, și API-urile de la Facebook și Twitter (pentru dialogurile de share). Acestea vă înregistrează date, cel mai probabil personale, cum ar fi IP-ul, browserul și locația pe glob.</p>
+            <p>Dacă doriți să vă protejați, folosiți <a href="https://www.ghostery.com/en/" target="_blank">Ghostery</a> sau alte extensii asemănătoare.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
