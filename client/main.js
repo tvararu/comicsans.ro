@@ -1,6 +1,34 @@
+AnswerCounts = new Meteor.Collection('answer.counts');
+ScoreCounts = new Meteor.Collection('score.counts');
+
 Meteor.subscribe('posts', function() {
   Session.set('postCount', Posts.find().count());
   Session.set('raffle', _.shuffle(Posts.find().fetch()));
+});
+
+Deps.autorun(function () {
+  var answersTotal = 0;
+  Posts.find().forEach(function (post) {
+    var count = AnswerCounts.findOne(post._id) || { total: 0, totalFake: 0 };
+    answersTotal += count.total;
+    Session.set(
+      'post' + post._id + '.count',
+      { total: count.total, totalFake: count.totalFake }
+    );
+  });
+  Session.set('answersTotal', answersTotal);
+});
+
+Deps.autorun(function () {
+  var scoresTotal = 0;
+  ScoreCounts.find().forEach(function (score) {
+    scoresTotal += score.total;
+    Session.set(
+      'score' + score._id + '.count',
+      score.total
+    );
+  });
+  Session.set('scoresTotal', scoresTotal);
 });
 
 Router.configure({
@@ -61,10 +89,9 @@ Router.map(function() {
   this.route('stats', {
     path: '/stats',
     template: 'stats',
+
     waitOn: function () {
-      Meteor.subscribe('postsWithAnswers');
-      Meteor.subscribe('scores');
-      return Meteor.subscribe('answers');
+      return Meteor.subscribe('stats');
     }
   });
 

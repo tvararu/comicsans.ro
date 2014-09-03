@@ -1,16 +1,23 @@
 <template name="stats">
   <div class="row">
     <div class="stats">
-      <h1>Câteva statistici mișto.</h1>
+      <h1>
+        Câteva statistici mișto.
+        <div class="small">Pagină în construcție.</div>
+      </h1>
+      <hr>
       <div class="row">
         <div class="col-md-6">
           <h3>
-            Răspunsuri înregistrate: <strong class="count">{{ getPublishedCount 'answersCount' }}</strong>.
+            Răspunsuri înregistrate: <strong class="count">{{ answersTotal }}</strong>.
           </h3>
+          <hr>
+          <p class="text-center">Selectează o categorie.</p>
           <div class="btn-group btn-group-justified">
             <a class="btn btn-success" href="#real" role="tab" data-toggle="tab">Știri pe bune</a>
             <a class="btn btn-danger" href="#fake" role="tab" data-toggle="tab">Times New Roman</a>
           </div>
+          <hr>
           <div class="tab-content">
             <div class="tab-pane active" id="real">
               {{#each realPosts}}
@@ -27,8 +34,9 @@
         <div class="col-md-6">
           <div class="sticky">
             <h3>
-              Jocuri finalizate: <strong class="count">{{ getPublishedCount 'scoresCount' }}</strong>.
+              Jocuri finalizate: <strong class="count">{{ scoresTotal }}</strong>.
             </h3>
+            <hr>
             <div class="row">
               <div class="col-md-6">
                 <div class="panel panel-default panel-chart">
@@ -47,25 +55,26 @@
                 </div>
               </div>
             </div>
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="legend">
-                  <table class="table">
-                    <thead>
-                      <tr><td>Categorie scor final</td><td>Număr</td></tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>0 - 10</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
-                      <tr><td>11 - 15</td><td>{{ getPublishedCount 'scoresCount11to15' }}</td></tr>
-                      <tr><td>16 - 20</td><td>{{ getPublishedCount 'scoresCount16to20' }}</td></tr>
-                      <tr><td>21 - 25</td><td>{{ getPublishedCount 'scoresCount21to25' }}</td></tr>
-                      <tr><td>26 - 29</td><td>{{ getPublishedCount 'scoresCount26to29' }}</td></tr>
-                      <tr><td>30</td><td>{{ getPublishedCount 'scoresCount30' }}</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+<!--             <div class="panel panel-default">
+  <div class="panel-body">
+    <div class="legend">
+      <table class="table">
+        <thead>
+          <tr><td>Categorie scor final</td><td>Număr</td></tr>
+        </thead>
+        <tbody>
+          <tr><td>0</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
+          <tr><td>1 - 5</td><td>{{ getPublishedCount 'scoresCount0to10' }}</td></tr>
+          <tr><td>11 - 15</td><td>{{ getPublishedCount 'scoresCount11to15' }}</td></tr>
+          <tr><td>16 - 20</td><td>{{ getPublishedCount 'scoresCount16to20' }}</td></tr>
+          <tr><td>21 - 25</td><td>{{ getPublishedCount 'scoresCount21to25' }}</td></tr>
+          <tr><td>26 - 29</td><td>{{ getPublishedCount 'scoresCount26to29' }}</td></tr>
+          <tr><td>30</td><td>{{ getPublishedCount 'scoresCount30' }}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->
           </div>
         </div>
       </div>

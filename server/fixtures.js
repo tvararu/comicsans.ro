@@ -124,3 +124,13 @@ if (Posts.find().count() === 0) {
     });
   }
 }
+
+var addDatabaseIndexes = function () {
+  Posts._ensureIndex({ fake: 1 });
+
+  Answers._ensureIndex({ postId: 1, fake: 1 });
+
+  Scores._ensureIndex({ value: 1 });
+};
+
+addDatabaseIndexes();

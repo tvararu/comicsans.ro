@@ -1,34 +1,36 @@
 Template.stats.rendered = function() {
   var doughnutData = [{
     value: 1,
-    color: "#e74c3c",
-    highlight: "#c0392b",
-    label: "0-10"
+    color: '#34495e',
+    highlight: '#2c3e50'
   }, {
     value: 1,
-    color: "#f39c12",
-    highlight: "#d35400",
-    label: "11-15"
+    color: '#e74c3c',
+    highlight: '#c0392b'
   }, {
     value: 1,
-    color: "#f1c40f",
-    highlight: "#f39c12",
-    label: "16-20"
+    color: '#f39c12',
+    highlight: '#d35400'
   }, {
     value: 1,
-    color: "#1abc9c",
-    highlight: "#16a085",
-    label: "21-25"
+    color: '#f1c40f',
+    highlight: '#f39c12'
   }, {
     value: 1,
-    color: "#3498db",
-    highlight: "#2980b9",
-    label: "26-29"
+    color: '#2ecc71',
+    highlight: '#27ae60'
   }, {
     value: 1,
-    color: "#9b59b6",
-    highlight: "#8e44ad",
-    label: "30"
+    color: '#1abc9c',
+    highlight: '#16a085'
+  }, {
+    value: 1,
+    color: '#3498db',
+    highlight: '#2980b9'
+  }, {
+    value: 1,
+    color: '#9b59b6',
+    highlight: '#8e44ad'
   }];
   var doughnutScores = new Chart(
     document.getElementById('doughnut-chart-scores').getContext('2d')
@@ -38,82 +40,89 @@ Template.stats.rendered = function() {
 
   var doughnutData2 = [{
     value: 1,
-    color: "#f39c12",
-    highlight: "#d35400",
-    label: "11-15"
+    color: '#f1c40f',
+    highlight: '#f39c12'
   }, {
     value: 1,
-    color: "#f1c40f",
-    highlight: "#f39c12",
-    label: "16-20"
+    color: '#2ecc71',
+    highlight: '#27ae60'
   }, {
     value: 1,
-    color: "#1abc9c",
-    highlight: "#16a085",
-    label: "21-25"
+    color: '#1abc9c',
+    highlight: '#16a085'
   }, {
     value: 1,
-    color: "#3498db",
-    highlight: "#2980b9",
-    label: "26-29"
+    color: '#3498db',
+    highlight: '#2980b9'
   }, {
     value: 1,
-    color: "#9b59b6",
-    highlight: "#8e44ad",
-    label: "30"
+    color: '#9b59b6',
+    highlight: '#8e44ad'
   }];
   var doughnutScores2 = new Chart(
     document.getElementById('doughnut-chart-scores-no-bottom').getContext('2d')
   ).Doughnut(doughnutData2, {
     responsive: true
   });
+
+  var partitions = _.range(8).map(function () { return 0; });
+  var bounds = [
+    [0, 0],
+    [1, 5],
+    [6, 10],
+    [11, 15],
+    [16, 20],
+    [21, 25],
+    [26, 29],
+    [30, 30]
+  ];
   Deps.autorun(function() {
-    var s0to10 = Counts.get('scoresCount0to10') || 1;
-    var s11to15 = Counts.get('scoresCount11to15') || 1;
-    var s16to20 = Counts.get('scoresCount16to20') || 1;
-    var s21to25 = Counts.get('scoresCount21to25') || 1;
-    var s26to29 = Counts.get('scoresCount26to29') || 1;
-    var s30 = Counts.get('scoresCount30') || 1;
-
-    doughnutScores.segments[0].value = s0to10;
-    doughnutScores.segments[1].value = s11to15;
-    doughnutScores.segments[2].value = s16to20;
-    doughnutScores.segments[3].value = s21to25;
-    doughnutScores.segments[4].value = s26to29;
-    doughnutScores.segments[5].value = s30;
-    doughnutScores.update();
-
-    doughnutScores2.segments[0].value = s11to15;
-    doughnutScores2.segments[1].value = s16to20;
-    doughnutScores2.segments[2].value = s21to25;
-    doughnutScores2.segments[3].value = s26to29;
-    doughnutScores2.segments[4].value = s30;
-    doughnutScores2.update();
-  });
-
-  if (window.innerWidth >= 992) {
-    var sticky = $('.sticky');
-    var footer = $('.disclaimer');
-    var page = $('.stats');
-
-    sticky.each(function (index, el) {
-      var $el = $(el);
-      $el.css('width', $el.parent().width());
-
-      page.on('scroll', function () {
-        if ($el.parent().offset().top <= 0) {
-          if (!$el.hasClass('fixed')) {
-            $el.addClass('fixed');
-          }
-          var diff = footer.offset().top - $el.height();
-          var top = (diff > 0) ? 0 : diff;
-          $el.css('top', top);
-        } else {
-          $el.removeClass('fixed');
-        }
-      });
+    _.each(bounds, function (bound, index) {
+      for (var i = bound[0]; i <= bound[1]; i++) {
+        var count = Session.get('score' + i + '.count');
+        partitions[index] += count;
+      }
+      // If there's not at least 1 element in the partition, add one.
+      // If not, chartjs explodes. :D Good job, guy, great library 10/10.
+      partitions[index] = partitions[index] || 1;
     });
-  }
+
+    var doughnuts = [
+      { ref: doughnutScores, lo: 0, hi: 7 },
+      { ref: doughnutScores2, lo: 3, hi: 7 }
+    ];
+    _.each(doughnuts, function (chart) {
+      for (var i = chart.lo, j = 0; i <= chart.hi; i++, j++) {
+        chart.ref.segments[j].value = partitions[i];
+        chart.ref.segments[j].label = bounds[i][0] + ' - ' + bounds[i][1];
+      }
+      chart.ref.update();
+    });
+  });
+  // 
+  // if (window.innerWidth >= 992) {
+  //   var sticky = $('.sticky');
+  //   var footer = $('.disclaimer');
+  //   var page = $('.stats');
+  //
+  //   sticky.each(function (index, el) {
+  //     var $el = $(el);
+  //     $el.css('width', $el.parent().width());
+  //
+  //     page.on('scroll', function () {
+  //       if ($el.parent().offset().top <= 0) {
+  //         if (!$el.hasClass('fixed')) {
+  //           $el.addClass('fixed');
+  //         }
+  //         var diff = footer.offset().top - $el.height();
+  //         var top = (diff > 0) ? 0 : diff;
+  //         $el.css('top', top);
+  //       } else {
+  //         $el.removeClass('fixed');
+  //       }
+  //     });
+  //   });
+  // }
 };
 
 Template.stats.helpers({
@@ -122,27 +131,34 @@ Template.stats.helpers({
   },
   'realPosts': function() {
     return Posts.find({ fake: false });
+  },
+  'answersTotal': function () {
+    return Session.get('answersTotal');
+  },
+  'scoresTotal': function () {
+    return Session.get('scoresTotal');
   }
 });
 
 Template.postWithAnswers.helpers({
   'answersCount': function() {
-    return Counts.get('answers' + this._id);
+    return Session.get('post' + this._id + '.count').total;
   },
   'answersTrueCount': function() {
-    return Counts.get('answersTrue' + this._id);
+    return Session.get('post' + this._id + '.count').totalFake;
   },
   'answersTruePercentage': function() {
-    var total = Counts.get('answers' + this._id);
-    return Math.floor(100 * (Counts.get('answersTrue' + this._id) / total));
+    var count = Session.get('post' + this._id + '.count');
+    return Math.floor(100 * (count.totalFake / count.total));
   },
   'answersFalseCount': function() {
-    return Counts.get('answers' + this._id) - Counts.get('answersTrue' + this._id);
+    var count = Session.get('post' + this._id + '.count');
+    return count.total - count.totalFake;
   },
   'answersFalsePercentage': function() {
-    var total = Counts.get('answers' + this._id);
+    var count = Session.get('post' + this._id + '.count');
     return Math.ceil(100 * (
-      (Counts.get('answers' + this._id) - Counts.get('answersTrue' + this._id)) / total
+      (count.total - count.totalFake) / count.total
     ));
   },
   'postClass': function() {
